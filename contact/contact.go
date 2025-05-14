@@ -11,9 +11,31 @@ type Contact struct {
 }
 type Annuaire map[string]Contact
 
-func (a Annuaire) AddContact(c Contact) {}
+func (a Annuaire) AddContact(c Contact) error {
+	if a.CheckContact(c) {
+		key := c.FirstName + "_" + c.LastName
+		return fmt.Errorf("Contact %s already exists", key)
+	}
 
-func (a Annuaire) DeleteContact(c Contact) {}
+	key := c.FirstName + "_" + c.LastName
+	a[key] = c	
+
+	fmt.Printf("Contact %s added successfully\n", key)
+
+	return nil
+}
+
+func (a Annuaire) DeleteContact(input string) bool{
+	for key, contact := range a {
+		if contact.FirstName == input || contact.LastName == input {
+			delete(a, key)
+			fmt.Printf("Contact %s deleted successfully\n", key)
+			return true
+		}
+	}
+	fmt.Printf("Contact %s not found\n", input)
+	return false
+}
 
 func (a Annuaire) FindContact(term string) []Contact {
 	var results []Contact
