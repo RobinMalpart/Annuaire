@@ -11,9 +11,25 @@ func (a Annuaire) AddContact(c Contact) {}
 
 func (a Annuaire) DeleteContact(c Contact) {}
 
-func (a Annuaire) FindContact(c Contact) {}
+func (a Annuaire) FindContact(term string) []Contact {
+	var results []Contact
 
-func (a Annuaire) UpdateContact(c Contact) {}
+	for _, contact := range a {
+		if contact.FirstName == term || contact.LastName == term {
+			results = append(results, contact)
+		}
+	}
+	return results
+}
+
+func (a Annuaire) UpdateContact(c Contact) bool {
+	key := c.FirstName + "_" + c.LastName
+	if _, exists := a[key]; exists {
+		a[key] = c
+		return true
+	}
+	return false
+}
 
 func (a Annuaire) GetAllContact(c Contact) {
 
