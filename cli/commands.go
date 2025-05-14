@@ -58,7 +58,7 @@ func ParseAndExecute(a contact.Annuaire) {
 			fmt.Println("Contact introuvable.")
 		}
 	case *list:
-		// À toi d'implémenter GetAllContact()
+		a.GetAllContact()
 	default:
 		fmt.Println("Utilisation :")
 		fmt.Println("  -add -first=John -last=Doe -phone=0600000000")
