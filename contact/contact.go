@@ -64,7 +64,10 @@ func (a *Annuaire) UpdateContact(c Contact) bool {
 }
 
 func (a Annuaire) GetAllContact() {
-
+	fmt.Println("Contact list")
+	for _, contact := range a {
+		fmt.Printf("%q %q %q /n", contact.FirstName, contact.LastName, contact.Phone)
+	}
 }
 
 func (a Annuaire) CheckContact(c Contact) bool {
