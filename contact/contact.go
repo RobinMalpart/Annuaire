@@ -10,6 +10,11 @@ type Contact struct {
 	LastName  string
 	Phone     string
 }
+
+func BuildKey(c Contact) string {
+	return strings.ToLower(c.FirstName + "_" + c.LastName)
+}
+
 type Annuaire map[string]Contact
 
 func (a Annuaire) AddContact(c Contact) error {
@@ -49,10 +54,10 @@ func (a Annuaire) FindContact(term string) []Contact {
 	return results
 }
 
-func (a Annuaire) UpdateContact(c Contact) bool {
-	key := c.FirstName + "_" + c.LastName
-	if _, exists := a[key]; exists {
-		a[key] = c
+func (a *Annuaire) UpdateContact(c Contact) bool {
+	key := BuildKey(c)
+	if _, exists := (*a)[key]; exists {
+		(*a)[key] = c
 		return true
 	}
 	return false
