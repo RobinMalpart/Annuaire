@@ -36,7 +36,7 @@ go run main.go [options]
 
 ```bash
 go run main.go -add -first=Jean -last=Michel -phone=0600000000
-go run main.go -find -term=Jean
+go run main.go -find -term=Doe
 go run main.go -list
 go run main.go -update -first=Jean -last=Michel -phone=0666666666
 go run main.go -delete -term=Jean

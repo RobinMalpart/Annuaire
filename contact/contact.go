@@ -54,6 +54,7 @@ func (a Annuaire) FindContact(term string) []Contact {
 	return results
 }
 
+// Permet uniquement d'update le numéro de telephone, pas le nom ni le prenom
 func (a *Annuaire) UpdateContact(c Contact) bool {
 	key := BuildKey(c)
 	if _, exists := (*a)[key]; exists {
