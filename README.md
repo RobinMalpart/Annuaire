@@ -1,3 +1,8 @@
+# Groupe 7
+Ranyl
+Rosvalde
+Robin
+
 # Annuaire CLI en Go
 
 Ce projet est une application en ligne de commande (CLI) écrite en Go.  
