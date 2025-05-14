@@ -1,6 +1,8 @@
 package contact
 
-import "fmt"
+import (
+	"strings"
+)
 
 type Contact struct {
 	FirstName string
@@ -38,9 +40,8 @@ func (a Annuaire) GetAllContact() {
 }
 
 func (a Annuaire) CheckContact(c Contact) bool {
-	key := c.FirstName + "_" + c.LastName
-	if existingContact, exists := a[key]; exists {
-		fmt.Printf("Contact %q, %q already exist\n", existingContact.FirstName, existingContact.LastName)
+	key := strings.ToLower(c.FirstName) + "_" + strings.ToLower(c.LastName)
+	if _, exists := a[key]; exists {
 		return true
 	}
 	return false
